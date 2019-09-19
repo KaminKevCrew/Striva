@@ -5,7 +5,7 @@ import configureStore from './store/store'; // not sure if I need this
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
-  if (window.currentUSer) {
+  if (window.currentUser) {
     const preloadedState = {
       session: { id: window.currentUser.id },
       entities: {
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-  
+  window.getState = store.getState;
   const root = document.getElementById("root")
   ReactDOM.render(< Root store={store}/>, root)
 })
