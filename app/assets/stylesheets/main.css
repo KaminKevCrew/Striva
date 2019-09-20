@@ -22,13 +22,32 @@ div {
   border-color: black;
 }
 
+.map-button {
+  margin: 10px;
+  padding: 10px;
+  color: grey;
+  background-color: orange;
+  border: 1px solid;
+  border-color: black;
+}
+
 .header-name {
   padding-left: -5px;
   padding-bottom: 10px;
 }
 
-.map {
+#map {
+  justify-self: center;
+  padding-top: 20px;
   display: flex;
-  width: 300px;
-  height: 300px;
+  width: 600px;
+  height: 600px;
+}
+
+.login-signup {
+  padding: 4px;
+  color: grey;
+  background-color: orange;
+  border: 1px solid;
+  border-color: black;
 }

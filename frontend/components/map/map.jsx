@@ -29,20 +29,26 @@ class showMap extends React.Component {
       style: 'mapbox://styles/mapbox/streets-v11',
       center: center, 
       zoom: zoom,
-      interactive: this.props.interactive
+      interactive: true
     });
 
     let map = this.map;
 
     map.on('load', function () {
       map.addLayer({
-        id: 'terrain-data',
-        type: 'line',
+        id: 'rpd_parks',
+        type: 'fill',
         source: {
           type: 'vector',
-          url: 'mapbox://mapbox.mapbox-terrain-v2'
+          url: 'mapbox://mapbox.3o7ubwm8'
         },
-        'source-layer': 'contour'
+        'source-layer': 'RPD_Parks',
+        layout: {
+          visibility: 'visible'
+        },
+        paint: {
+          'fill-color': 'rgba(61,153,80,0.55)'
+        }
       });
     })
   };
