@@ -11,9 +11,11 @@ const Greeting = ({ currentUser, logout }) => {
   );
   const personalGreeting = () => (
     <hgroup className="header-group">
-      <h2 className="header-name">Welcome, {currentUser.username}!</h2>
+      <h2 className="header-name">Hello, {currentUser.username}!</h2>
       <button className="header-button" onClick={logout}>Log Out</button>
+      <div id="map"></div>
     </hgroup>
+    
   );
 
   return currentUser ? personalGreeting() : sessionLinks();
