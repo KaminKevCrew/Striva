@@ -2,11 +2,11 @@
   background-color: #BD3803;
   padding: 20px;
   font-size: 25px;
-  color: grey;
+  color: whitesmoke;
 }
 
 div {
-  background-color: grey;
+  background-color: whitesmoke;
 }
 
 .header-group {
@@ -17,7 +17,7 @@ div {
 
 .header-button {
   padding-left: 5px;
-  color: grey;
+  color: whitesmoke;
   background-color: #BD3803;
   border-color: black;
 }
@@ -25,7 +25,7 @@ div {
 .map-button {
   margin: 10px;
   padding: 10px;
-  color: grey;
+  color: whitesmoke;
   background-color: #BD3803;
   border: 1px solid;
   border-color: black;
@@ -46,7 +46,7 @@ div {
 
 .login-signup {
   padding: 4px;
-  color: grey;
+  color: whitesmoke;
   background-color: #BD3803;
   border: 1px solid;
   border-color: black;
