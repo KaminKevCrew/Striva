@@ -1,0 +1,51 @@
+.all-feed{
+    background-color:rgb(245, 245, 250);
+    width: 100vw;
+    padding-top: 10%;
+    display: flex;
+
+    .grid-right{
+        width: 20vw;
+        margin-right: 5vw;
+
+        section{
+            position: sticky;
+            top: 60px;
+        }
+
+    
+    }
+
+
+    .grid-left{
+        // width: 20vw;
+        margin-left: 10vw;
+    }
+
+    .grid-center{
+        width: 40vw;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    @media only screen and (max-width: 900px) {
+        .grid-left, .grid-right {
+            width: 0;
+            visibility: hidden;
+        }
+        .grid-center{
+            width: 100vw;
+        }
+
+    }
+
+        
+
+}
+
+
+

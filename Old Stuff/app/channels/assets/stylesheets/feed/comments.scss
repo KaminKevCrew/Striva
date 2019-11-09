@@ -1,0 +1,249 @@
+.profile-picture-small-comment{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    
+
+    img{
+        display: inline;
+        margin: 0 auto;
+        height: 100%;
+        width: auto;
+    }
+        
+}
+
+#comment-item{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 2%;
+    padding-left: 2%;
+
+    
+
+    p, h3{
+        margin-left: 20px;
+        margin-top: 5px;
+        font-family: $strava-font;
+        color: $strava-black;
+        font-size: 12px;
+    }
+
+    h3{
+        font-weight: 700;
+    }
+
+    #delete-comment{
+        // margin-left: 72%;
+        display: flex;
+        justify-content: flex-end;
+        visibility: hidden;
+        #x{
+            width: 71%;
+        }
+    }
+
+    
+
+    
+}
+
+#comment-item:hover #delete-comment{
+        visibility: visible;
+}
+
+.like-comment{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#comment-icon{
+    background-color: $strava-grey;
+    width: 20px;
+    padding: 5px;
+    display: flex;
+    margin-right: 1%;
+    border-radius: 8px;
+    border: 1px solid $strava-grey;
+    margin-bottom: 3%;
+
+    
+    img{
+        width: 15px;
+        margin-right: auto;
+        margin-left: auto;
+
+    }
+
+    
+
+}
+
+#comment-icon:hover{
+        background-color: white;
+}
+
+#add-comment{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 11px;
+
+    textarea{
+
+        height: 14px;
+        resize: none;
+        background-color: #F5F5FA;
+        padding-bottom: 10px;
+        width: 72%;
+        line-height: 1.5em;
+        transition: height 0.1s ease;
+        padding: 7px;
+        display: block;
+        margin-bottom: 0;
+        border: none;
+        border-radius: 3px;
+        font-family: $strava-font;
+        font-size: 12px;
+
+
+    }
+
+    input{
+        background-color: #FFFFFF;
+        font-family: $strava-font;
+        color: $strava-orange;
+        border: none;
+        border-radius: 3px;
+        margin-left: 1%;
+        width: 11%;
+        font-weight: 700;
+    } 
+
+    input:hover{
+        background-color: #F5F5FA;
+    }
+}
+
+#view-all-comments{
+    font-family: $strava-font;
+    font-size: 12px;
+    margin-left: 47px;
+    padding-bottom: 10px;
+    cursor: pointer;
+   
+}
+
+#view-all-comments:hover{
+    color: #007FB6;
+}
+
+.comment-modal{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    z-index: 10986;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    #modal-content{
+        display: flex;
+        width: 91vh;
+        background:  #F5F5FA;
+        border-radius: 3px;
+        flex-direction: column;
+        height: min-content;
+}
+
+#modal-header{
+    display: flex;
+
+    .profile-picture-small{
+    margin: 11px;
+    }
+
+    h1 {
+        font-family: $strava-font;
+        color: #2d2d32;;
+        padding-top: 2%;
+        font-size: 22px;
+        margin-left: 4%;
+        padding-top: 3%;
+
+        }
+
+    }
+        
+}
+
+.profile-picture-small-modal{
+    width: 31px;
+    height: 25px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    
+
+    img{
+        display: inline;
+        margin: 0 auto;
+        height: 100%;
+        width: auto;
+    }
+        
+}
+
+#comment-item-modal{
+    display: flex;
+    margin-left: 4%;
+    margin-top: 2%;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #e6e6eb;
+    margin-right: 4%;
+}
+
+.comment-content{
+    margin-left: 4%;
+    width: 100%;
+    font-family: $strava-font;
+        h3{
+            color: $strava-blue;
+            font-weight: 700;
+            font-size: 12px;
+        }
+        p{
+            font-size: 12px;
+            margin-top: 1%;
+        }
+
+}
+
+#delete-comment-modal{
+    margin-right: 3%;
+    visibility: hidden;
+}
+
+#comment-item-modal:hover #delete-comment-modal{
+        visibility: visible;
+}
+
+#x-modal{
+    height: 24px
+}
+
+.close{
+    width: 91vh;
+    display: flex;
+    justify-content: flex-end;
+    img{
+        margin-left: auto;
+    }
+}

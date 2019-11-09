@@ -1,0 +1,118 @@
+
+.tabs{
+    display: flex;
+    justify-content: space-evenly;
+    width: 35vh;
+    border-radius: 2px;
+
+    :hover{
+       background-color: $background-color; 
+    }
+
+    #active-tab {
+        align-items: center;
+        width: 75%;
+        display: flex;
+        justify-content: center;
+        padding: 4%;
+        background-color: $background-color;
+        // box-shadow: $shadow;
+    }    
+
+    p{
+        align-items: center;
+        width: 75%;
+        display: flex;
+        justify-content: center;
+        padding: 4%;
+        // background-color: $background-color;
+        background-color: white;
+        img{
+            height: 30px
+        }
+    }
+}
+
+.tab-content{
+    height: 270px;
+    width: 35vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: $shadow;
+    position: relative;
+    
+    
+    h1 {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 11px;
+        font-family: $strava-font;
+        font-weight: 400;
+        line-height: 20px;
+        padding-bottom: 3%;
+    }
+
+    img{
+        width: 26%;
+        position: absolute;
+        margin-left: 182px;
+        margin-top: 15px;
+    }
+
+    article{
+        color: #79d7bd;
+        font-size: 20px;
+        font-family: $strava-font;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 25%;
+    }
+
+    section{
+        display: flex;
+        justify-content: space-around;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3%;
+        
+
+        
+
+        p{
+            font-family: $strava-font;
+            font-weight: 400;
+            line-height: 20px;
+            font-size: 13px;
+            margin-left: 2%;
+        }
+
+    }
+
+    
+
+}
+
+#recent-activity-chart{
+    position: absolute;
+    left: 13px;
+    top: 126px;
+
+    section{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 12px;
+        margin-left: -2px;
+    }
+}
+
+
+
+
+
+
+
+

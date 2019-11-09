@@ -1,0 +1,29 @@
+ div[id*="map-"] {
+    top: 0;
+    bottom: 0;
+    margin-bottom: 30px;
+    height: 20vh;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+
+    
+ }
+
+  div[id*="map-show-"]{
+      margin: 0px;
+      height: 50vh;
+      width: 100%;
+      
+
+  }
+
+    div[id*="map-custom-"]{
+    margin: 0px;
+    height: 190px;
+    width: 271px;
+    margin-left: 34px;
+    margin-top: 14%;
+
+  }

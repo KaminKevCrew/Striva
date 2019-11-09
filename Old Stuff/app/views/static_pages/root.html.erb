@@ -1,0 +1,42 @@
+<script type="text/javascript">
+  // window.currentUser = { id: 3, username: "sennecy_the_cat" };
+</script>
+
+<% if logged_in? %>
+  <script type="text/javascript">
+    window.currentUser = <%= render(
+      "api/users/user.json.jbuilder",
+      user: current_user
+    ).html_safe %></script>
+<% end %>
+
+<script type="text/javascript">
+  window.images = {
+    logo: "<%=image_url("logo.png") %>",
+    biking: "<%=image_url("biking.JPG") %>",
+    biking2: "<%=image_url("biking_2.JPG") %>",
+    biking: "<%=image_url("mountain.jpg") %>",
+    mountain_video: "<%=image_url("mountain.mp4")%>",
+    running_icon: "<%=image_url("running_icon.png")%>",
+    biking_icon: "<%=image_url("bike_icon.png")%>",
+    swimming_icon: "<%=image_url("swimming_icon.png")%>",
+    indigo: "<%=image_url("indigo.jpg")%>",
+    lost: "<%=image_url("lost.svg")%>",
+    quick_bike: "<%=image_url("quick_bike.jpg")%>",
+    bike_icon_circle: "<%=image_url("bike_icon_circle.png")%>",
+    swim_icon_circle: "<%=image_url("swimming_icon_circle.png")%>",
+    run_icon_circle: "<%=image_url("running_circle_icon.png")%>",
+    comment_icon: "<%=image_url("comment.png")%>",
+    like_icon: "<%=image_url("like.png")%>",
+    x: "<%=image_url("X.png")%>",
+    close: "<%=image_url("close.png")%>",
+    challenge: "<%=image_url("challenge.png")%>",
+    upload: "<%=image_url("upload.png")%>",
+    mountain_climb: "<%=image_url("mountains.jpg")%>",
+    spinner: "<%=image_url("spinner.gif")%>"
+
+  }
+</script>
+
+
+<h1 id="root">React Broken</h1>
