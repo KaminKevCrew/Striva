@@ -7,6 +7,8 @@ const Greeting = ({ currentUser, logout }) => {
       <Link to="/login">Login</Link>
       &nbsp;or&nbsp;
       <Link to="/signup">Sign Up</Link>
+      &nbsp;or&nbsp;
+      <Link to="/login">Demo</Link>
     </nav>
   );
   const personalGreeting = () => (
