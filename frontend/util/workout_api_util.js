@@ -13,6 +13,13 @@ export const fetchWorkout = id => (
   })
 );
 
+export const fetchUserWorkouts = () => (
+  $.ajax({
+    method: 'get',
+    url: `api//workouts/`,
+  })
+)
+
 export const createWorkout = workoutForm => (
   $.ajax({
     method: 'post',
@@ -22,3 +29,4 @@ export const createWorkout = workoutForm => (
     processData: false,
   })
 );
+
