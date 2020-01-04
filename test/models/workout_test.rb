@@ -2,7 +2,7 @@
 #
 # Table name: workouts
 #
-#  id           :integer          not null, primary key
+#  id           :bigint           not null, primary key
 #  workout_type :string
 #  title        :string
 #  description  :text

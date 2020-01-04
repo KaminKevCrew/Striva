@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
+#  id              :bigint           not null, primary key
 #  username        :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
@@ -22,6 +22,8 @@ class User < ApplicationRecord
   has_many :workouts,
   foreign_key: :user_id,
   class_name: :Workout
+
+  has_many :routes
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

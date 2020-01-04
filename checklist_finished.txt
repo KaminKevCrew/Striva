@@ -1,0 +1,137 @@
+Files that have been checked/completed:
+
+app
+  assets
+    config - DONE
+      manifest.js - DONE
+    javascripts - DONE
+      api - DONE
+        sessions.coffee - DONE
+        users.coffee - DONE
+      channels - DONE
+        .keep - DONE
+      application.js - DONE
+      bundle.js - DONE
+      cable.js - DONE
+      static_pages.coffee - DONE
+      workouts.coffee - DONE
+  channels/application_cable - DONE
+    channel.rb - DONE
+    connection.rb - DONE
+  controllers
+    api
+      sessions_controller.rb - DONE
+      users_controller.rb - DONE
+    concerns - DONE
+      .keep - DONE
+    application_controller.rb - DONE
+    static_pages_controller.rb - DONE
+  helpers - DONE
+    api - DONE
+      sessions_helper.rb - DONE
+      users_helper.rb - DONE
+    application_helper.rb - DONE
+    static_pages_helper.rb - DONE
+    workouts_helper.rb - DONE
+  jobs - DONE
+    application_job.rb - DONE
+  mailers - DONE
+    application_mailer.rb - DONE
+  models
+    concerns - DONE
+      .keep - DONE
+    application_record.rb - DONE
+  views
+    layouts
+      mailer.html.erb - DONE
+      mailer.text.erb - DONE
+
+bin - DONE
+  bundle - DONE
+  rails - DONE
+  rake - DONE
+  setup - DONE
+  spring - DONE
+  update - DONE
+  yarn - DONE
+
+config
+  environments - DONE
+    development.rb - DONE
+    production.rb - DONE
+    test.rb - DONE
+  initializers - DONE
+    application_controller_renderer.rb - DONE
+    assets.rb - DONE
+    backtrace_silencers.rb - DONE
+    content_security_policy.rb - DONE
+    cookies_serializer.rb - DONE
+    filter_parameter_logging.rb - DONE
+    inflections.rb - DONE
+    mime_types.rb - DONE
+    wrap_parameters.rb - DONE
+  locales - DONE
+    en.yml - DONE
+  application.rb - DONE
+  boot.rb - DONE
+  cable.yml - DONE
+  environment.rb - DONE
+  puma.rb - DONE
+  spring.rb - DONE
+
+db
+  migrate
+    users.rb - DONE
+    workouts.rb - DONE
+    create_active_storage_tables.active_storage.rb - DONE
+    comments.rb - DONE
+    likes.rb - DONE
+    routes.rb - DONE
+
+frontend
+  actions
+    workouts - DONE
+      workout_actions.js - DONE
+    session_actions.js - DONE
+  components
+    session_form - DONE
+      login_form_container.jsx - DONE
+      session_form.jsx - DONE
+      signup_form_container.jsx - DONE
+  reducers
+    errors_reducer.js - DONE
+    session_reducer.js - DONE
+  store - DONE
+    store.js - DONE
+  util
+    comment_api_util.js - DONE
+    like_api_util.js - DONE
+    session_api_util.js - DONE
+    user_api_util.js - DONE
+    user_route_api_util.js - DONE
+    workout_api_util.js - DONE
+
+lib - DONE
+  assets - DONE
+    .keep - DONE
+  tasks - DONE
+    .keep - DONE
+
+log - DONE
+  .keep - DONE
+  development.log - DONE
+
+node_modules - DONE
+  various Files - DONE
+
+public - DONE
+  404.html - DONE
+  422.html - DONE
+  500.html - DONE
+  apple-touch-icon-precomposed.png - DONE
+  apple-touch-icon.png - DONE
+  favicon.ico - DONE
+  robots.txt - DONE
+
+storage - DONE
+  .keep - DONE
