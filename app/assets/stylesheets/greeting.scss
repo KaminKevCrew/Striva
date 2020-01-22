@@ -1,0 +1,46 @@
+.login-signup, .header-group {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 30px;
+  flex-direction: row;
+  box-sizing: border-box;
+  background-size: unset;
+  position: relative;
+  overflow: hidden;
+  background-image: asset-url("mountain.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.map-button, .header-button {
+  color: whitesmoke;
+  height: 30px;
+  width: 100px;
+  font-size: 18px;
+  background-color: #fc4c02;
+  text-decoration: none;
+  color: black
+}
+
+.login-signup-button {
+  color: whitesmoke;
+  height: 30px;
+  width: 100px;
+  font-size: 18px;
+  background-color: #fc4c02;
+  text-decoration: none;
+  color: black
+}
+
+.header-name {
+  color: whitesmoke;
+}
+
+// #map {
+//   background-color: transparent;
+// }

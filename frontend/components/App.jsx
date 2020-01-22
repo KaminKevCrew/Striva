@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 
 import GreetingContainer from './greeting/greeting_container';
+import SplashPage from './splash_page';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import mapContainer from "./map/map_container"
@@ -16,11 +17,12 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
   <div>
-    <header>
+    {/* <header>
       <h1 className="welcome-message">Welcome to Striva</h1>
-      <GreetingContainer />
-    </header>
+    </header> */}
     <Switch>
+      <Route exact path="/" component={SplashPage} />
+      <Route exact path="/greeting" component={GreetingContainer} />
       <Route path="/map" component={mapContainer}/>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />

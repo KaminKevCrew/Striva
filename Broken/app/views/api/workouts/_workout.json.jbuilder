@@ -1,0 +1,1 @@
+json.extract! workout, :id, :description, :lat, :lng, :title, :user_id
