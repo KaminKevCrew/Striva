@@ -5,12 +5,11 @@ export default (props) => {
   return (
     <div className="splash-page">
       <div className='content'>
-        Introducing
         <h2 className='splash-title'>Striva</h2>
-        <p>For those Striving for more performance.</p>
-        <section className="signup-splash-page">
-          <Link to="/greeting" className='signup-splash-page'>
-              Join Now
+        <p>Striving for more performance.</p>
+        <section className="splash-page-section">
+          <Link to="/greeting" className='signup-button'>
+              Signup Now
           </Link>
         </section>
       </div>
