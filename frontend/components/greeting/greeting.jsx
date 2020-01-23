@@ -26,7 +26,7 @@ const Greeting = ({ currentUser, logout }) => {
       <Link to="/map" className="map-button">
         View Map
       </Link>
-      <div id="map"></div>
+      <div id="map" className='map'></div>
     </hgroup>
     
   );
