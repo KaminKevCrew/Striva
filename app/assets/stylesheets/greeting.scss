@@ -41,6 +41,10 @@
   color: whitesmoke;
 }
 
-// #map {
-//   background-color: transparent;
-// }
+#map {
+  justify-self: center;
+  padding-top: 20px;
+  display: flex;
+  width: 600px;
+  height: 600px;
+}

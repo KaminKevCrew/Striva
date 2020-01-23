@@ -57,7 +57,7 @@ class showMap extends React.Component {
 
   handleClick() {
     this.props.history.location.pathname === "/feed" ?
-      this.props.history.push(`/activity/${this.props.activity.id}`) :
+      this.props.history.push(`/workout/${this.props.workout.id}`) :
       ""
   }
 
