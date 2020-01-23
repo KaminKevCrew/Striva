@@ -9,7 +9,7 @@ export default (props) => {
         <p>Striving for more performance.</p>
         <section className="splash-page-section">
           <Link to="/greeting" className='signup-button'>
-              Signup Now
+              Signup now
           </Link>
         </section>
       </div>

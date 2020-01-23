@@ -63,7 +63,7 @@ class showMap extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='map-page'>
         <div onClick={this.handleClick} id='map'></div>
       </div>
       

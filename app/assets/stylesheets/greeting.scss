@@ -19,9 +19,13 @@
 }
 
 .map-button, .header-button {
+  display: flex;
+  justify-content: center;
   color: whitesmoke;
   height: 30px;
   width: 100px;
+  border-radius: 15px;
+  margin: 15px;
   font-size: 18px;
   background-color: #fc4c02;
   text-decoration: none;
@@ -55,6 +59,11 @@
 }
 
 .div-container {
+  margin: auto;
+  color: whitesmoke;
+}
+
+.greeting-text {
   margin: auto;
   color: whitesmoke;
 }

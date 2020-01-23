@@ -17,10 +17,10 @@ const Greeting = ({ currentUser, logout }) => {
     <hgroup className="header-group">
       <h2 className="header-name">Hello, {currentUser.username}!</h2>
       <Link to="/" className="header-button" onClick={logout}>
-        Log Out
+        <div className='greeting-text'>Log Out</div>
       </Link>
       <Link to="/map" className="map-button">
-        View Map
+        <div className='greeting-text'>View Map</div>
       </Link>
       <div id="map" className='map'></div>
     </hgroup>

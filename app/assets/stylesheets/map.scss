@@ -1,7 +1,22 @@
 #map {
+  margin-top: 70px;
   justify-self: center;
   padding-top: 20px;
   display: flex;
-  width: 600px;
-  height: 600px;
+  width: 80vw;
+  height: 80vh;
+}
+
+.map-page {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-size: unset;
+  overflow: hidden;
+  background-image: asset-url('marathon.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
