@@ -14,12 +14,14 @@ import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import MapContainer from "./map/map_container.js";
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import FeedContainer from "./feed/feed_container";
 
 const App = () => (
   <div>
     <Switch>
       <Route exact path="/" component={SplashPage} />
       <Route exact path="/greeting" component={GreetingContainer} />
+      <Route exact path="/feed" component={FeedContainer}/>
       <Route path="/map" component={MapContainer}/>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />

@@ -6,7 +6,7 @@ export default (props) => {
 
       <section className="nav-bar">
         <div className='signUp-logo'>
-          <div className="logo-container">
+          <div className="logo-container" onClick={() => props.history.push("/greeting")}>
           </div>
           {props.currentUser ?
             <div id="dash-container">

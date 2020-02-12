@@ -1,0 +1,18 @@
+.feed-container-div {
+  padding-top: 70px;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-size: unset;
+  overflow: hidden;
+  background-image: asset-url('road.jpeg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+section {
+  margin-top: 70px;
+}
