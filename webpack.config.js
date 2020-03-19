@@ -6,7 +6,6 @@ module.exports = {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'), // NEW
     filename: './bundle.js'
   },
-  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -21,6 +20,7 @@ module.exports = {
       }
     ]
   },
+  devtool: 'source-map',
   resolve: {
     extensions: [".js", '.jsx', '*']
   }

@@ -3,4 +3,6 @@ class Api::FollowsController < ApplicationController
       @followers = current_user.followers
       @following = current_user.following
   end
+
+  # Add create and destroy
 end
