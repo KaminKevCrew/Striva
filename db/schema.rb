@@ -73,14 +73,14 @@ ActiveRecord::Schema.define(version: 2020_01_24_031029) do
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
+    t.string "session_token", null: false
+    t.string "password_digest", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.string "city"
     t.string "state"
     t.string "country"
     t.string "sex"
-    t.string "session_token", null: false
-    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["first_name", "last_name"], name: "index_users_on_first_name_and_last_name", unique: true
