@@ -51,5 +51,3 @@ test:
 production: 
   <<: *default
   database: striva_production
-  username: striva
-  password: <%=ENV['STRIVA_DATABASE_PASSWORD'] %>
