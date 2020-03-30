@@ -15,5 +15,4 @@ json.set! 'follows' do
             end
         end
     end
-
 end

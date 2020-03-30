@@ -22,8 +22,4 @@ class Api::SessionsController < ApplicationController
       render json: ["Nobody is signed in."], status: 404
     end
   end
-
-  def show
-    render_json 
-  end
 end

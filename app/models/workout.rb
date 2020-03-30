@@ -20,6 +20,9 @@ class Workout < ApplicationRecord
   foreign_key: :user_id,
   class_name: :User
 
+  has_many :comments
+  has_many :likes
+
   def self.in_bounds(bounds)
     self.where("lat < ?", bounds[:northEast][:lat])
       .where("lat > ?", bounds[:southWest][:lat])
