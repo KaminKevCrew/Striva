@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     resource :session, only: [:create, :destroy]
 
-    resources :activities do 
+    resources :workouts do 
       resources :comments, only: [:index]
       resources :likes, only: [:index]
     end

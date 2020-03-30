@@ -1,21 +1,21 @@
 export const fetchLike = (likeId) => (
   $.ajax({
     url: `api/likes/${likeId}`,
-    method: 'get',
+    method: 'GET',
   })
 );
 
 export const fetchAllLikes = (workoutId) => (
   $.ajax({
     url: `api/workouts/${workoutId}/likes`,
-    method: 'get',
+    method: 'GET',
   })
 )
 
 export const createLike = (like) => (
   $.ajax({
     url: `api/likes`,
-    method: 'post',
+    method: 'POST',
     data: {like},
   })
 )

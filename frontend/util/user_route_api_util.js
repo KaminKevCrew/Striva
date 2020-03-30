@@ -1,14 +1,14 @@
 export const fetchAllRoutes = (userId) => (
   $.ajax({
     url: `api/users/${userId}/routes`,
-    method: 'get',
+    method: 'GET',
   })
 );
 
 export const createRoute = (userId, route) => (
   $.ajax({
     url: `api/users/${userId}/routes`,
-    method: 'post',
+    method: 'POST',
     data: {route},
   })
 )
@@ -16,6 +16,7 @@ export const createRoute = (userId, route) => (
 export const deleteRoute = (userId, routeId) => (
   $.ajax({
     url: `api/users/${userId}/routes/${routeId}`,
-    method: 'delete',
+    method: 'DELETE',
+    data: {routeId}
   })
 )

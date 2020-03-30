@@ -1,13 +1,13 @@
 export const receiveRoute = (route) => (
   $.ajax({
     url: `api/routes/${route.id}`,
-    method: 'get',
+    method: 'GET',
   })
 );
 
 export const fetchAllRoutes = (data) => (
   $.ajax({
-    method: 'get',
+    method: 'GET',
     url: 'api/routes',
     data
   })
@@ -15,7 +15,7 @@ export const fetchAllRoutes = (data) => (
 
 export const fetchRoute = (id) => {
   $.ajax({
-    method: 'get',
+    method: 'GET',
     url: `api/workouts/${id}`,
   })
 }
@@ -23,7 +23,7 @@ export const fetchRoute = (id) => {
 export const createRoute = (route) => (
   $.ajax({
     url: `api/routes`,
-    method: 'post',
+    method: 'POST',
     data: { route },
   })
 )

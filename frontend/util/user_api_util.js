@@ -1,20 +1,20 @@
 export const fetchUser = (userId) => (
   $.ajax ({
     url: `api/users/${userId}`,
-    method: 'get',
+    method: 'GET',
   })
 );
 
 export const fetchAllUsers = () => (
   $.ajax ({
     url: `api/users`,
-    method: 'get',
+    method: 'GET',
   })
 );
 
 export const fetchAllFollows = () => (
   $.ajax ({
     url: `api/follows`,
-    method: 'get',
+    method: 'GET',
   })
 );

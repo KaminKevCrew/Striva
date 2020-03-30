@@ -1,29 +1,29 @@
 export const fetchWorkouts = data => (
   $.ajax({
-    method: 'get',
+    method: 'GET',
     url: 'api/workouts',
     data
   })
 );
 
-export const fetchWorkout = id => (
+export const fetchWorkout = workoutId => (
   $.ajax({
-    method: 'get',
-    url: `api/workouts/${id}`,
+    method: 'GET',
+    url: `api/workouts/${workoutId}`,
   })
 );
 
-export const fetchUserWorkouts = () => (
+export const fetchUserWorkouts = (userId) => (
   $.ajax({
-    method: 'get',
-    url: `api//workouts/`,
+    method: 'GET',
+    url: `api/users/${userId}/workouts/`,
   })
 )
 
 export const createWorkout = workoutForm => (
   $.ajax({
-    method: 'post',
-    url: 'api/benches',
+    method: 'POST',
+    url: 'api/workouts',
     data: workoutForm,
     contentType: false,
     processData: false,

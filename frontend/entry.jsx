@@ -4,13 +4,13 @@ import Root from './components/Root';
 import configureStore from './store/store'; // not sure if I need this
 
 document.addEventListener("DOMContentLoaded", () => {
-  let store;
+  let store = configureStore();
   if (window.currentUser) {
     const preloadedState = {
       session: { id: window.currentUser.id },
       entities: {
         users: { [window.currentUser.id]: window.currentUser }
-      }
+      },
     };
     store = configureStore(preloadedState);
     delete window.currentUser;
