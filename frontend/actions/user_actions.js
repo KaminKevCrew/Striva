@@ -18,6 +18,6 @@ export const fetchUser = (userId) => dispatch =>
 );
 
 export const fetchAllUsers = () => dispatch =>
-  UserUtil.fetchAllUsers().then((users) => dispatch(receiveAllUsers(users))
+  UserUtil.fetchAllUsers().then(() => dispatch(receiveAllUsers())
 );
 

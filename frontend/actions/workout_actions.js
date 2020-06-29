@@ -31,7 +31,7 @@ export const fetchAllWorkouts = page => dispatch =>
 );
 
 export const fetchUserWorkouts = () => dispatch => (
-  APIUtil.fetchUserWorkouts().then((workouts) => dispatch(receiveCurrentUserWorkouts(workouts)))
+  APIUtil.fetchWorkouts().then((workouts) => dispatch(receiveCurrentUserWorkouts(workouts)))
 );
 
 export const fetchWorkout = id => dispatch => (

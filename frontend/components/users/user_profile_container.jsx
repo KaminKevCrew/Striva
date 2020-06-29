@@ -7,11 +7,11 @@ import { fetchUser } from '../../actions/user_actions';
 const mapStateToProps = (state) => ({
   followers: Object.values(state.entities.followers),
   following: Object.values(state.entities.followers),
-  current_user: state.session.currentUser,
+  current_user: state.session.id,
   workouts: Object.values(state.entities.currentUserWorkouts),
   users: state.entities.users,
-  comments: state.entities.comments,
-  likes: state.entities.likes,
+  // comments: state.entities.comments,
+  // likes: state.entities.likes,
 })
 
 const mapDispatchToProps = (dispatch) => ({

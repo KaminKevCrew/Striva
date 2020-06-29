@@ -8,7 +8,7 @@ export default (props) => {
         <h2 className='splash-title'>Striva</h2>
         <p>Striving for more performance.</p>
         <section className="splash-page-section">
-          <Link to="/greeting" className='signup-button'>
+          <Link to="/signup" className='signup-button'>
               Signup now 
           </Link>
         </section>
