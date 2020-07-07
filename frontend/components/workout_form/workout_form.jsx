@@ -16,6 +16,6 @@ class BenchForm extends React.Component {
   }
 
   navigateToSearch() {
-    this.props.history.
+    this.props.history
   }
 }
