@@ -13,11 +13,12 @@ class UserProfile extends React.Component {
     this.state = {
       loading: true
     }
+    this.workouts = []
     this.getUserWorkouts = this.getUserWorkouts.bind(this)
   }
 
   componentDidMount() {
-    this.props.fetchUserWorkouts()
+    this.workouts = this.props.fetchUserWorkouts()
     // this.props.fetchUser(this.props.match.params.currentUser)
     // .then(
     //     () => this.setState({ loading: false })
@@ -56,27 +57,28 @@ class UserProfile extends React.Component {
   }
 
   getUserWorkouts() {
-    let workouts = this.props.entities.currentUserWorkouts.workouts
+    let workouts = this.workouts
     let userId = this.props.currentUser
     let userWorkouts = []
-    for(let i = 0; i < workouts.length; i++) {
+    debugger
+    // for(let i = 0; i < workouts.length; i++) {
+    for (let i = 0; i < 10; i++) {
       if(workouts[i].userId == userId) {
         userWorkouts.push(workouts[i])
       }
     }
-    debugger
     return userWorkouts
   }
 
 
   render() {
-    let user = {}
-    let workouts = this.getUserWorkouts()
-    debugger
+    // let user = {}
+    // let workouts = this.getUserWorkouts()
+    // debugger
     
-    user = this.props.users[this.props.currentUser]
-    
-
+    // user = this.props.users[this.props.currentUser]
+    console.log(this.props)
+    console.log("Props should be above")
     return (
       <div>
         <br /><br /><br /><br />
@@ -88,8 +90,9 @@ class UserProfile extends React.Component {
         <br />
         What is happening???
         <br />
-        {user.username}
-        {workouts}
+        {/* {workouts} */}
+        {/* {user.username}
+        {workouts} */}
       </div>
     )
   }

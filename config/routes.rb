@@ -14,11 +14,11 @@ Rails.application.routes.draw do
       resources :likes, only: [:index]
     end
 
-    resources :likes, only: [:create, :show, :destroy]
+    resources :likes, only: [:create, :destroy]
 
     resources :comments, only: [:create, :destroy, :show]
 
-    resources :follows, only: [:index]
+    resources :follows, only: [:create, :destroy]
   end
 
   root "static_pages#root"

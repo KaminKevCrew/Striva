@@ -22,7 +22,7 @@ def makeRoute(path, userId)
     lon = doc.xpath('//xmlns:trkpt/@lon').map{|pt| pt.to_s.to_f}
     lat = doc.xpath('//xmlns:trkpt/@lat').map{|pt| pt.to_s.to_f}
 
-    act_type = doc.xpath('//xmlns:type/text()').map{|pt| pt.to_s}
+    work_type = doc.xpath('//xmlns:type/text()').map{|pt| pt.to_s}
 
     route = {}
     (0..lat.length).each do |c|
@@ -37,23 +37,23 @@ def makeRoute(path, userId)
     all_time = doc.xpath('//xmlns:time/text()').map{|pt| pt.to_s}
     all_time = all_time.to_json
 
-    activity_type = ""
-    if act_type[0] == "9"
-        activity_type = "Run"
-    elsif act_type[0] == "1"
-        activity_type = "Bike"
+    workout_type = ""
+    if work_type[0] == "9"
+        workout_type = "Run"
+    elsif work_type[0] == "1"
+        workout_type = "Bike"
     end
 
-    p activity_type
+    p workout_type
 
 
     duration = gpx.duration()
     distance = gpx.distance(opts = { :units => 'miles' })
     average_speed = gpx.average_speed()
     time = gpx.time()
-    Activity.create!(
+    Workout.create!(
         "user_id": userId,
-        "activity_type": activity_type,
+        "workout_type": workout_type,
         "title": title[0],
         "description": "So fun",
         "elapse_time": duration,
@@ -62,7 +62,7 @@ def makeRoute(path, userId)
         "distance": distance,
         "average_speed": average_speed,
         "time": time,
-        "time_stamps": all_time
+        "time_stamp": all_time
     )
 end
 
@@ -164,98 +164,98 @@ ActiveRecord::Base.transaction do
 
     p "done with follows"
     
-    Activity.destroy_all
+    Workout.destroy_all
 
-    p "starting activity....u1"
+    p "starting workout....u1"
 
-    file_names_alia[2..-1].each do |file|
+    file_names_kevin[2..-1].each do |file|
         next if File.extname(file) != ".gpx"
         r1 = makeRoute("#{Rails.root}/db/gpx_kevin/#{file}", u1.id)
-        Kudo.create!(user_id: u2.id, activity_id: r1.id)
-        Kudo.create!(user_id: u3.id, activity_id: r1.id)
-        Kudo.create!(user_id: u4.id, activity_id: r1.id)
-        Kudo.create!(user_id: u5.id, activity_id: r1.id)
-        Kudo.create!(user_id: u6.id, activity_id: r1.id)
-        Kudo.create!(user_id: u7.id, activity_id: r1.id)
-        Comment.create!(body: "SOOO COOL!", user_id: u1.id, activity_id: r1.id)
-        Comment.create!(body: "So so so fast!", user_id: u2.id, activity_id: r1.id)
-        Comment.create!(body: "race ya next time", user_id: u3.id, activity_id: r1.id)
+        Like.create!(user_id: u2.id, workout_id: r1.id)
+        Like.create!(user_id: u3.id, workout_id: r1.id)
+        Like.create!(user_id: u4.id, workout_id: r1.id)
+        Like.create!(user_id: u5.id, workout_id: r1.id)
+        Like.create!(user_id: u6.id, workout_id: r1.id)
+        Like.create!(user_id: u7.id, workout_id: r1.id)
+        Comment.create!(body: "SOOO COOL!", user_id: u1.id, workout_id: r1.id)
+        Comment.create!(body: "So so so fast!", user_id: u2.id, workout_id: r1.id)
+        Comment.create!(body: "race ya next time", user_id: u3.id, workout_id: r1.id)
     end
 
-     p "starting activity....all users"
+     p "starting workout....all users"
 
-    file_names_noah[2..-1].each do |file|
+    file_names_joe[2..-1].each do |file|
         p "starting u1"
         next if File.extname(file) != ".gpx"
-        r3 = makeRoute("#{Rails.root}/db/gpx_noah/#{file}", u3.id)
+        r3 = makeRoute("#{Rails.root}/db/gpx_joe/#{file}", u3.id)
 
-        Comment.create!(body: "you are a beast!", user_id: u1.id, activity_id: r3.id)
-        Comment.create!(body: "dude so fast!", user_id: u2.id, activity_id: r3.id)
-        Comment.create!(body: "next time, invite me", user_id: u3.id, activity_id: r3.id)
-        Comment.create!(body: "Can I be as cool as you?", user_id: u4.id, activity_id: r3.id)
+        Comment.create!(body: "you are a beast!", user_id: u1.id, workout_id: r3.id)
+        Comment.create!(body: "dude so fast!", user_id: u2.id, workout_id: r3.id)
+        Comment.create!(body: "next time, invite me", user_id: u3.id, workout_id: r3.id)
+        Comment.create!(body: "Can I be as cool as you?", user_id: u4.id, workout_id: r3.id)
 
 
-        Comment.create!(body: "SOOO COOL!", user_id: u1.id, activity_id: r3.id)
-        Comment.create!(body: "So so so fast!", user_id: u2.id, activity_id: r3.id)
-        Comment.create!(body: "race ya next time", user_id: u3.id, activity_id: r3.id)
+        Comment.create!(body: "SOOO COOL!", user_id: u1.id, workout_id: r3.id)
+        Comment.create!(body: "So so so fast!", user_id: u2.id, workout_id: r3.id)
+        Comment.create!(body: "race ya next time", user_id: u3.id, workout_id: r3.id)
 
-        Kudo.create!(user_id: u2.id, activity_id: r3.id)
-        Kudo.create!(user_id: u1.id, activity_id: r3.id)
-        Kudo.create!(user_id: u10.id, activity_id: r3.id)
-        Kudo.create!(user_id: u11.id, activity_id: r3.id)
-        Kudo.create!(user_id: u12.id, activity_id: r3.id)
-        Kudo.create!(user_id: u15.id, activity_id: r3.id)
-        Kudo.create!(user_id: u9.id, activity_id: r3.id)
-        Kudo.create!(user_id: u3.id, activity_id: r3.id)
+        Like.create!(user_id: u2.id, workout_id: r3.id)
+        Like.create!(user_id: u1.id, workout_id: r3.id)
+        Like.create!(user_id: u10.id, workout_id: r3.id)
+        Like.create!(user_id: u11.id, workout_id: r3.id)
+        Like.create!(user_id: u12.id, workout_id: r3.id)
+        Like.create!(user_id: u15.id, workout_id: r3.id)
+        Like.create!(user_id: u9.id, workout_id: r3.id)
+        Like.create!(user_id: u3.id, workout_id: r3.id)
     end
 
-        file_names_peter[2..-1].each do |file|
+    file_names_anna[2..-1].each do |file|
         p 'starting u2'
         next if File.extname(file) != ".gpx"
         r2 = makeRoute("#{Rails.root}/db/gpx_anna/#{file}", u2.id)
 
-        Comment.create!(body: "you are a beast!", user_id: u1.id, activity_id: r2.id)
-        Comment.create!(body: "dude so fast!", user_id: u2.id, activity_id: r2.id)
-        Comment.create!(body: "next time, invite me", user_id: u3.id, activity_id: r2.id)
-        Comment.create!(body: "send ittt", user_id: u4.id, activity_id: r2.id)
+        Comment.create!(body: "you are a beast!", user_id: u1.id, workout_id: r2.id)
+        Comment.create!(body: "dude so fast!", user_id: u2.id, workout_id: r2.id)
+        Comment.create!(body: "next time, invite me", user_id: u3.id, workout_id: r2.id)
+        Comment.create!(body: "send ittt", user_id: u4.id, workout_id: r2.id)
 
 
-        Comment.create!(body: "SOOO COOL!", user_id: u1.id, activity_id: r2.id)
-        Comment.create!(body: "heeeellllla sick!", user_id: u2.id, activity_id: r2.id)
-        Comment.create!(body: "im so pumped for you to race", user_id: u12.id, activity_id: r2.id)
+        Comment.create!(body: "SOOO COOL!", user_id: u1.id, workout_id: r2.id)
+        Comment.create!(body: "heeeellllla sick!", user_id: u2.id, workout_id: r2.id)
+        Comment.create!(body: "im so pumped for you to race", user_id: u12.id, workout_id: r2.id)
 
-        Kudo.create!(user_id: u2.id, activity_id: r2.id)
-        Kudo.create!(user_id: u1.id, activity_id: r2.id)
-        Kudo.create!(user_id: u10.id, activity_id: r2.id)
-        Kudo.create!(user_id: u11.id, activity_id: r2.id)
-        Kudo.create!(user_id: u12.id, activity_id: r2.id)
-        Kudo.create!(user_id: u15.id, activity_id: r2.id)
-        Kudo.create!(user_id: u9.id, activity_id: r2.id)
-        Kudo.create!(user_id: u3.id, activity_id: r2.id)
+        Like.create!(user_id: u2.id, workout_id: r2.id)
+        Like.create!(user_id: u1.id, workout_id: r2.id)
+        Like.create!(user_id: u10.id, workout_id: r2.id)
+        Like.create!(user_id: u11.id, workout_id: r2.id)
+        Like.create!(user_id: u12.id, workout_id: r2.id)
+        Like.create!(user_id: u15.id, workout_id: r2.id)
+        Like.create!(user_id: u9.id, workout_id: r2.id)
+        Like.create!(user_id: u3.id, workout_id: r2.id)
     end
 
-        file_names_anand[2..-1].each do |file|
+    file_names_kertu[2..-1].each do |file|
         p 'starting u3'
         next if File.extname(file) != ".gpx"
         r4 = makeRoute("#{Rails.root}/db/gpx_kertu/#{file}", u4.id)
 
-        Comment.create!(body: "you are a beast!", user_id: u1.id, activity_id: r4.id)
-        Comment.create!(body: "dude so fast!", user_id: u2.id, activity_id: r4.id)
-        Comment.create!(body: "next time, invite me", user_id: u3.id, activity_id: r4.id)
-        Comment.create!(body: "Can I be as cool as you?", user_id: u4.id, activity_id: r4.id)
+        Comment.create!(body: "you are a beast!", user_id: u1.id, workout_id: r4.id)
+        Comment.create!(body: "dude so fast!", user_id: u2.id, workout_id: r4.id)
+        Comment.create!(body: "next time, invite me", user_id: u3.id, workout_id: r4.id)
+        Comment.create!(body: "Can I be as cool as you?", user_id: u4.id, workout_id: r4.id)
 
 
-        Comment.create!(body: "SOOO COOL!", user_id: u1.id, activity_id: r4.id)
-        Comment.create!(body: "So so so fast!", user_id: u2.id, activity_id: r4.id)
-        Comment.create!(body: "race ya next time", user_id: u3.id, activity_id: r4.id)
+        Comment.create!(body: "SOOO COOL!", user_id: u1.id, workout_id: r4.id)
+        Comment.create!(body: "So so so fast!", user_id: u2.id, workout_id: r4.id)
+        Comment.create!(body: "race ya next time", user_id: u3.id, workout_id: r4.id)
 
-        Kudo.create!(user_id: u2.id, activity_id: r4.id)
-        Kudo.create!(user_id: u1.id, activity_id: r4.id)
-        Kudo.create!(user_id: u10.id, activity_id: r4.id)
-        Kudo.create!(user_id: u11.id, activity_id: r4.id)
-        Kudo.create!(user_id: u15.id, activity_id: r4.id)
-        Kudo.create!(user_id: u12.id, activity_id: r4.id)
-        Kudo.create!(user_id: u9.id, activity_id: r4.id)
-        Kudo.create!(user_id: u3.id, activity_id: r4.id)
+        Like.create!(user_id: u2.id, workout_id: r4.id)
+        Like.create!(user_id: u1.id, workout_id: r4.id)
+        Like.create!(user_id: u10.id, workout_id: r4.id)
+        Like.create!(user_id: u11.id, workout_id: r4.id)
+        Like.create!(user_id: u15.id, workout_id: r4.id)
+        Like.create!(user_id: u12.id, workout_id: r4.id)
+        Like.create!(user_id: u9.id, workout_id: r4.id)
+        Like.create!(user_id: u3.id, workout_id: r4.id)
     end
 end
