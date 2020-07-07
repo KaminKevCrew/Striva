@@ -13,11 +13,12 @@ class UserProfile extends React.Component {
     this.state = {
       loading: true
     }
+    this.getUserWorkouts = this.getUserWorkouts.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchUserWorkouts()
-    // this.props.fetchUser(this.props.match.params.current_user)
+    // this.props.fetchUser(this.props.match.params.currentUser)
     // .then(
     //     () => this.setState({ loading: false })
     // )
@@ -55,120 +56,39 @@ class UserProfile extends React.Component {
   }
 
   getUserWorkouts() {
-    let workouts = this.props.workouts
-    
+    let workouts = this.props.entities.currentUserWorkouts.workouts
+    let userId = this.props.currentUser
+    let userWorkouts = []
+    for(let i = 0; i < workouts.length; i++) {
+      if(workouts[i].userId == userId) {
+        userWorkouts.push(workouts[i])
+      }
+    }
+    debugger
+    return userWorkouts
   }
 
 
   render() {
-    // let dateBounds4 = [];
-    // let last4 = [];
     let user = {}
-    let workouts = {}
-    // if (this.props.workouts.length !== 0) {
-    //   dateBounds4 = this.getLastFourWeeks()
-    //   last4 = this.props.workouts.filter(workout => {
-    //     let date = new Date(workout.time)
-    //     if (this.between(dateBounds4, date)) return workout
-    //   })
-
-
-    //   user = this.props.users[this.props.match.params.userId]
-    // }
-
-    user = this.props.users[this.props.current_user]
-    workouts = this.props.workouts[this.props.match.params.current_user]
+    let workouts = this.getUserWorkouts()
+    debugger
+    
+    user = this.props.users[this.props.currentUser]
     
 
     return (
-      // <div>
-      //   {this.props.workouts.length === 0 ?
-      //     <div className="spinner">
-      //       {/* <img src={window.images.spinner} alt="" /> */}
-      //     </div>
-      //     :
-      //     <div className="user-profile-page">
-      //       <div id="background-prof">
-      //         {/* <img src={window.images.biking2} alt="" /> */}
-      //       </div>
-
-      //       <div className="user-content">
-      //         <div className="profile-page-picture">
-      //           {/* <img src={user.photoUrl} /> */}
-      //         </div>
-
-      //         <p id="user-name">{user.first_name} {user.last_name}</p>
-
-      //         <div className="top-section">
-      //           <section>
-      //             <div id="user-feed-recent-profile">
-      //               {/* <UserFeedRecentActivity activity={this.props.workouts} /> */}
-      //             </div>
-      //             <div id="last-4-weeks">
-      //               <p>Last 4 Weeks</p>
-      //               {/* <p>{last4.length}</p> */}
-      //               {/* <CountUp end={last4.length} delay={2} /> */}
-      //               <p>Total Workouts</p>
-      //             </div>
-      //             <div>
-      //               {/* <WorkoutCalendar workouts={last4} bounds={dateBounds4} /> */}
-      //             </div>
-      //           </section>
-      //         </div>
-      //       </div>
-      //       <div className="user-profile-maps">
-      //         <h2> Recent Workouts </h2>
-      //         {last4.map(workout => {
-      //           return (
-      //             <div >
-      //               <div id="profile-workout-details">
-      //                 <section id="workout-details">
-      //                   {/* {workout.workout_type !== 'Bike' ? (
-      //                     // <img src={window.images.running_icon} alt="" />
-      //                   ) :
-      //                     // <img src={window.images.biking_icon} alt="" />
-      //                   } */}
-      //                   <div id="workout-header-profile">
-      //                     <h3 id="workout-title">{workout.title}</h3>
-      //                     <p>{formatDate(workout.time)}</p>
-      //                   </div>
-      //                 </section>
-      //                 <section id="show-stats">
-      //                   <div>
-      //                     <h3>Distance</h3>
-      //                     <p>{Math.round(workout.distance * 100) / 100} mi</p>
-      //                   </div>
-      //                   <section></section>
-      //                   <div>
-      //                     <h3>Avg Speed</h3>
-      //                     <p>{Math.round(workout.average_speed * 100) / 100}</p>
-      //                   </div>
-      //                   <section></section>
-      //                   <div>
-      //                     <h3>Time</h3>
-      //                     <p>{this.getElapseTime(workout)}</p>
-      //                   </div>
-      //                 </section>
-      //               </div>
-
-      //               {/* <WorkoutMap
-      //                 key={workout.id}
-      //                 workout={workout}
-      //                 interactive={false}
-      //                 container={`map-${workout.id}`}
-      //               /> */}
-      //             </div>
-      //           )
-      //         })}
-      //       </div>
-      //     </div>
-      //   }
-      // </div>
       <div>
+        <br /><br /><br /><br />
         User Profile is here!
         <br/>
-        {user.username}
         <br/>
+        <br /><br />
+        <br />
+        <br />
+        What is happening???
+        <br />
+        {user.username}
         {workouts}
       </div>
     )
