@@ -1,40 +1,28 @@
+//TODO: figure out if there's a way to keep track of whether or not a user presses enter in the search bar after manually changing the url. 
+
+//TODO: Is it possible to create a route that redirects to home page if a user manually enters an invalid url?
+
 import React from 'react';
-import { Provider } from 'react-redux';
-import {
-  Route,
-  Redirect,
-  Switch,
-  Link,
-  HashRouter
-} from 'react-router-dom';
+import NavBarContainer from './nav_bar/nav_bar_container';
+import Home from './home/home';
+import SignupContainer from './session/signup_container.jsx';
+import LoginContainer from './session/login_container';
+import UserProfileContainer from './user_profile/user_profile_container';
+import WorkoutShowContainer from './workout/workout_show_container';
+import WorkoutFormContainer from './workout/workout_form_container';
+import FeedContainer from './feed/feed_container';
+import { Route } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute } from '../utils/route_util';
 
-import SplashPage from './splash_page';
-import GreetingContainer from './greeting/greeting_container';
-import FeedContainer from "./feed/feed_container";
-import UserProfileContainer from "./users/user_profile_container";
-import MapContainer from "./map/map_container.js";
-import RouteIndexContainer from "./routes/route_index_container";
-import RouteCreateContainer from "./routes/route_create_container";
-import LoginFormContainer from './session_form/login_form_container';
-import SignupFormContainer from './session_form/signup_form_container';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
-
-const App = () => (
+export default () => (
   <div>
-    <Switch>
-      <Route exact path="/" component={SplashPage} />
-      <Route exact path="/greeting" component={GreetingContainer} />
-      <Route exact path="/feed" component={FeedContainer} />
-      <Route exact path="/users/*" component={UserProfileContainer} />
-      <Route path="/map" component={MapContainer} />
-      <Route exact path="/routes" component={RouteIndexContainer} />
-      <Route path="/routes/create" component={RouteCreateContainer}/>
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
-    </Switch>
-    
-    
+    <Route path="/" component={NavBarContainer} />
+    <Route exact path="/" component={Home} />
+    <AuthRoute path="/signup" component={SignupContainer} />
+    <AuthRoute path="/login" component={LoginContainer} />
+    <ProtectedRoute exact path="/users/:userId" component={UserProfileContainer} />
+    <ProtectedRoute path="/workouts/:workoutId" component={WorkoutShowContainer} />
+    <ProtectedRoute path="/newworkout" component={WorkoutFormContainer} />
+    <ProtectedRoute exact path="/feed" component={FeedContainer} />
   </div>
 );
-
-export default App;

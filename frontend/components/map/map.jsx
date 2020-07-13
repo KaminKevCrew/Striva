@@ -1,139 +1,73 @@
-import React from 'react'
-import mapboxgl from 'mapbox-gl'
+import React from "react";
+import mapboxgl from 'mapbox-gl';
+import mapCreate from './map_create';
+import mapAddPopup from './map_add_popup';
+import mapAddRoute from './map_add_route';
 
-import { Link, withRouter } from 'react-router-dom'
+// Optional Props:
+// container = "elementID" //=> default = "map"
+// center = [lon, lat] //=> default = [-122, 38]
+// zoom = int //=> default = 9 
+// interactive = bool //=> default = false
+// coordinates = [geoJSON coordinates] //=> if none given, skip
+// data = {object for popup data} //=> if none given, skip
 
+// TODO: Consider rendering every 3rd or 4th coordinate on a gpx file to improve performance.
+// NOTE: I found that two .gpx points can be as close as 7ft apart
 
-class showMap extends React.Component {
+// TODO: investigate tracking of cursor over route, as well as how expanding this component would work for route creation (might be easiest to develop a new component specifically for route creation.)
 
+class Map extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      map: "",
+    this.mapBuildOptions = {
+      container: this.props.container,
+      // this.props.center,
+      // this.props.zoom,
+      interactive: this.props.interactive,
+      // this.props.bounds,
+      // this.setBounds()
     }
-    this.mapAddPopup = this.mapAddPopup.bind(this);
-    this.mapAddRoute = this.mapAddRoute.bind(this);
-    this.mapAddStyle = this.mapAddStyle.bind(this);
-    this.mapCreate = this.mapCreate.bind(this);
-    this.mapBuilder = this.mapBuilder.bind(this);
-    this.handleClick = this.handleClick.bind(this)
+    // debugger
+    this.mLO = {
+      coords: this.props.coordinates,
+      data: this.props.data
+    }
+    this.setBounds = this.setBounds.bind(this)
+  } 
+
+  setBounds() {
+    // debugger
+    let westSouth = [this.props.bounds[0], this.props.bounds[1]]
+    let eastNorth = [this.props.bounds[2], this.props.bounds[3]]
+    let bounds = new mapboxgl.LngLatBounds(westSouth, eastNorth)
+    // debugger
+    // let bounds = new mapboxgl.LngLatBounds([0, 0], [10, 10])
+    this.mapBuildOptions["bounds"] = bounds
   }
-
-  mapAddPopup(map, data) { // Adds a popup on click for a point of interest.
-    map.on('load', function () {
-      map.addSource('places', data)
-      map.addLayer({
-        'id': 'places',
-        'type': 'symbol',
-        'source': 'places',
-        'layout': {
-          'icon-image': '{icon}-15',
-          'icon-allow-overlap': true
-        }
-      });
-      map.on('click', 'places', function (e) {
-        var coordinates = e.features[0].geometry.coordinates.slice();
-        var description = e.features[0].properties.description;
-
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-
-        new mapboxgl.Popup()
-          .setLngLat(coordinates)
-          .setHTML(description)
-          .addTo(map);
-      });
-
-      // Change the cursor to a pointer when the mouse is over the places layer.
-      map.on('mouseenter', 'places', function () {
-        map.getCanvas().style.cursor = 'pointer';
-      });
-
-      // Change it back to a pointer when it leaves.
-      map.on('mouseleave', 'places', function () {
-        map.getCanvas().style.cursor = '';
-      });
-    });
+  
+  mapAddLayers(map) { // Adds each element to the map
+    this.setBounds();
+    this.props.coordinates ? mapAddRoute(map, this.mLO.coords) : false;
+    this.props.data ? mapAddPopup(map, this.mLO.data) : false;
   }
-
-  mapAddRoute(map, coordinates) {
-    map.on('load', function () { // Adds a source to get coordinates from
-      map.addSource('route', {
-        'type': 'geojson',
-        'data': {
-          'type': 'Feature',
-          'properties': {},
-          'geometry': {
-            'type': 'LineString',
-            'coordinates': coordinates
-          }
-        }
-      }); // add source
-      map.addLayer({ // Adds coordinates to map with selected styling.
-        'id': 'route',
-        'type': 'line',
-        'source': 'route',
-        'layout': {
-          'line-join': 'round',
-          'line-cap': 'round'
-        },
-        'paint': {
-          'line-color': '#888',
-          'line-width': 8
-        }
-      }); // add layer
-    }) // on load
-
-  }
-
-  mapAddStyle(map) {
-    map.on('load', function () {
-      // adds zoom/rotate map controls
-      map.addControl(new mapboxgl.NavigationControl());
-    }) // on load
-  }
-
-  mapCreate(container = "map", center = [-122, 38], zoom = 9, interactive = true) {
-    mapboxgl.accessToken = 'pk.eyJ1Ijoia2FtaW5rZXZjcmV3IiwiYSI6ImNrMGUydnoxbzBkbHgzY3IxOGZmcWN6dHAifQ.K2wzWQ-7KEhyUxXFR48aTA';
-
-    let map = new mapboxgl.Map({
-      container: container,
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: center,
-      zoom: zoom,
-      interactive: interactive
-    });
-    return map
-  }
-
-  mapBuilder(map) { // Adds each element to the map
-    this.mapAddStyle(map);
-    this.mapAddRoute(map, this.coordinates);
-    this.mapAddPopup(map, this.data);
-  }
-
+  
   componentDidMount() {
-    let map = this.mapCreate();
-    this.mapBuilder(map);
-
-  }
-
-  handleClick() {
-    this.props.history.location.pathname === "/feed" ?
-      this.props.history.push(`/workout/${this.props.workout.id}`) :
-      ""
+    let container = this.mapBuildOptions.container
+    // debugger
+    let interactive = this.mapBuildOptions.interactive
+    let bounds = this.mapBuildOptions.bounds
+    let map = mapCreate(container, interactive, bounds); 
+    this.mapAddLayers(map);
+    map.fitBounds(this.mapBuildOptions["bounds"]) // assigns map size
+    // debugger
   }
 
   render() {
     return (
-      <div className='map-page'>
-        <div onClick={this.handleClick} id='map'></div>
-      </div>
-      
-    )
+      <div id={this.mapBuildOptions.container} className="map"></div>
+    );
   }
+}
 
-};
-
-export default withRouter(showMap);
+export default Map;

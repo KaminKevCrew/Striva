@@ -1,0 +1,1 @@
+// NOTE: Comment box should be a click to expand element that shows on workout pages specifically. Not on feed page.

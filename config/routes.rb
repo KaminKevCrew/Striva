@@ -1,25 +1,27 @@
+# == Route Map
+#
+#                    Prefix Verb URI Pattern                                                                              Controller#Action
+#        rails_service_blob GET  /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
+# rails_blob_representation GET  /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
+#        rails_disk_service GET  /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
+# update_rails_disk_service PUT  /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
+#      rails_direct_uploads POST /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
+
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   namespace :api, defaults: { format: :json } do
-
-    resources :users, only: [:create, :show, :index] do 
-      resources :routes, only: [:create, :destroy, :index, :show, :edit]
+    resources :users do
+      resources :workouts, only: [:index]
     end
 
     resource :session, only: [:create, :destroy]
 
-    resources :workouts do 
-      resources :comments, only: [:index]
-      resources :likes, only: [:index]
-    end
+    post '/search', to: 'users#search'
 
-    resources :likes, only: [:create, :destroy]
-
-    resources :comments, only: [:create, :destroy, :show]
-
+    resources :workouts
+    resources :likes, only: [:create]
+    delete '/likes', to: 'likes#destroy'
     resources :follows, only: [:create, :destroy]
   end
-
-  root "static_pages#root"
+  root to: 'root#root'
 end

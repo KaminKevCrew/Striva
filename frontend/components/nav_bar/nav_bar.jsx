@@ -3,7 +3,7 @@ import React from 'react';
 export default (props) => {
   return (
     <div>
-
+      <button onClick={props.logout}>Log Out</button>
       <section className="nav-bar">
         <div className='signUp-logo'>
           <div className="logo-container" onClick={() => props.history.push("/greeting")}>

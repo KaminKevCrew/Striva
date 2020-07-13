@@ -3,13 +3,16 @@
 # Table name: follows
 #
 #  id          :bigint           not null, primary key
-#  user_id     :integer          not null
-#  follower_id :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  followee_id :integer          not null
+#  follower_id :integer          not null
 #
-
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Indexes
+#
+#  index_follows_on_followee_id  (followee_id)
+#  index_follows_on_follower_id  (follower_id)
+#
 
 # This model initially had no columns defined. If you add columns to the
 # model remove the '{}' from the fixture names and add the columns immediately

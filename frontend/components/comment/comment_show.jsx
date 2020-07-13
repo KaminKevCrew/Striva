@@ -1,0 +1,1 @@
+// NOTE: comments should only show on individual workout pages.

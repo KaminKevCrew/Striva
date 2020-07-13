@@ -2,32 +2,38 @@
 #
 # Table name: workouts
 #
-#  id           :integer          not null, primary key
-#  workout_type :string
-#  title        :string
-#  description  :text
-#  lat          :float
-#  lng          :float
-#  user_id      :integer          not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id            :bigint           not null, primary key
+#  average_speed :float
+#  coordinates   :string
+#  description   :text             not null
+#  distance      :float
+#  elapsed_time  :float
+#  end_time      :datetime
+#  start_time    :datetime
+#  title         :string           not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  athlete_id    :integer          not null
 #
-
+# Indexes
+#
+#  index_workouts_on_athlete_id  (athlete_id)
+#  index_workouts_on_title       (title)
+#
 class Workout < ApplicationRecord
-  validates :title, :workout_type, :description, :lat, :lng, presence: true
+  validates :description, :title, presence: true
 
-  belongs_to :user,
-  foreign_key: :user_id,
-  class_name: :User
+  has_many :likes,
+    primary_key: :id,
+    foreign_key: :workout_id,
+    class_name: :Like
 
-  has_many :comments
-  has_many :likes
+  has_many :likers,
+    through: :likes,
+    source: :user
 
-  def self.in_bounds(bounds)
-    self.where("lat < ?", bounds[:northEast][:lat])
-      .where("lat > ?", bounds[:southWest][:lat])
-      .where("lng > ?", bounds[:southWest][:lng])
-      .where("lng < ?", bounds[:northEast][:lng])
-  end
-
+  belongs_to :athlete,
+    primary_key: :id,
+    foreign_key: :athlete_id,
+    class_name: :User
 end

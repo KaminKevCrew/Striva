@@ -1,0 +1,1 @@
+// NOTE: likes go on workouts only at the moment. Need to add them to comments, and possibly routes.
