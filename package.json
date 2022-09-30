@@ -17,7 +17,7 @@
     "lodash.debounce": "^4.0.8",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "recharts": "^1.7.1",
+    "recharts": "^2.1.14",
     "status-check": "0.0.17",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.10",
