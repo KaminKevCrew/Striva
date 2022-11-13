@@ -20,7 +20,7 @@
     "recharts": "^1.7.1",
     "status-check": "0.0.17",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.10",
+    "webpack-cli": "^3.3.12",
     "redux-devtools-extension": "^2.13.8"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
